@@ -180,16 +180,13 @@ Movies
 .movies__row {
     width: 100%;
     max-width: 1280px;
+    display: flex;
     margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 
-.movies--movies {
-    display: flex;
-    flex-wrap: wrap;
-
-
-} 
+.movies--movies {} 
 
 
 .movie {
