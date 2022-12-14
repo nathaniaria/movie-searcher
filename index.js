@@ -1,7 +1,7 @@
 // api https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03
 // 
 
-const moviesListELem = document.querySelector(".movies--movies")
+const moviesListELem = document.querySelector(".movies__row")
 
 async function onSearchChange(event) {
     const id = event.target.value
