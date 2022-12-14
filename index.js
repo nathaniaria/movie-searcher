@@ -3,9 +3,16 @@
 
 const moviesListELem = document.querySelector(".movies")
 
+async function onSearchChange(event) {
+    const id = event.target.value
+    renderMovies(id)
+}
 
-async function main() {
-    const movies = await fetch("https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=fast")
+
+
+
+async function main(id) {
+    const movies = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=fast`)
     const moviesData = await movies.json()
     moviesListELem.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join("")
 
@@ -18,7 +25,6 @@ main()
 
 function moviesHTML(movie) {
     return `
-    <div class="movies">
         <div class="movie">
             <figure class="movie__img--wrapper">
                 <img src="${movie.Poster}" class="movie__img" alt="">
