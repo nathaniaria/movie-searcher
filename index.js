@@ -1,7 +1,7 @@
 // api https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03
 // 
 
-const moviesListELem = document.querySelector(".movies")
+const moviesListELem = document.querySelector(".movies--movies")
 
 async function onSearchChange(event) {
     const id = event.target.value
@@ -25,6 +25,7 @@ main()
 
 function moviesHTML(movie) {
     return `
+    <div class="movies--movies">
         <div class="movie">
             <figure class="movie__img--wrapper">
                 <img src="${movie.Poster}" class="movie__img" alt="">

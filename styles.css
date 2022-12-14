@@ -184,7 +184,7 @@ Movies
 }
 
 
-.movies {
+.movies--movies {
     display: flex;
     flex-wrap: wrap;
 
