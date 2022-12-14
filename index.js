@@ -25,7 +25,6 @@ main()
 
 function moviesHTML(movie) {
     return `
-    <div class="movies--movies">
         <div class="movie">
             <figure class="movie__img--wrapper">
                 <img src="${movie.Poster}" class="movie__img" alt="">
