@@ -8,19 +8,25 @@ async function onSearchChange(event) {
     renderMovies(id)
 }
 
+async function renderMovies(id) {
+    const movies = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=${id}`)
+    const moviesData = await movies.json()
+    moviesListELem.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join("")
+
+}
+
 
 
 
 async function main(id) {
-    const movies = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=fast`)
+    const movies = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=${id}`)
     const moviesData = await movies.json()
     moviesListELem.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join("")
-
     console.log(moviesData)
 }
 
 
-main()
+
 
 
 function moviesHTML(movie) {
@@ -37,14 +43,6 @@ function moviesHTML(movie) {
     `
 }
 
+renderMovies()
+main()
 
-
-
-/* <div class="movies__container">
-    <div class="movies-list">
-        <div class="movie">
-            <img src="${movie.Poster}" class="movie__img" alt="">
-            <h3 class="movie__title">${movie.Title}</h3>
-        </div>
-    </div
-</div> */
