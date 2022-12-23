@@ -33,24 +33,33 @@
                 <p class="header__para">We have amazing movies for your whole family.</p>
                 <div class="input__wrapper">
                         <input type="text"  placeholder="Search by Movie title, or Keyword" onchange="onSearchChange(event)">
-                        <div class="search-wrapper search-icon fas fa-search"></div>
+                        <i class="search-wrapper search-icon fas fa-search"></i>
                 </div>
             </div>
         </header>
 
         <div class="movie__info--container">
-            <div class="movie__results--header">Search Results:</div>
-            <div class="movie__results--header">Date Range:</div>
+            <div class="movie__results--header">Search Results: <span class="searchResult"></span></div>
+            <select id="filter" onchange="filterMovies(event)">
+                <option value="">Sort</option>
+                <option value="NEWEST_TO_OLDEST">Newest to Oldest</option>
+                <option value="OLDEST_TO_NEWEST">Oldest to Newest</option>
+            </select>
         </div>
         <div class="movies__container">
             <div class="movies__row">
                     <div class="movie">
                         <figure class="movie__img--wrapper">
                             <img src="" class="movie__img" alt="">
+                            <div class="movie__title"></div>
                         </figure>
+                        
                     </div>
-                    <div class="movie__title"></div>
             </div>
+            <div class="movies__loading movieSpin">
+                <i class="fas fa-spinner movies__loading--spinner"></i>
+            </div>
+
         </div>
     </section>
     
