@@ -50,7 +50,7 @@ NAV
 #landing-page {
     min-height: 100vh;
     width: 100%;
-    
+
 }
 
 .overlay--img {
@@ -92,7 +92,7 @@ input {
     border-radius: 30px;
     padding-left: 18px;
     z-index: 1;
-    
+
 }
 
 .input__wrapper {
@@ -177,7 +177,7 @@ Movies
 
 .movies__container {
     padding: 56px 0;
-    
+
 }
 
 
@@ -215,14 +215,14 @@ Movies
     transition: all 300ms ease;
     width: 100%;
     height: 100%;
-    
+
 }
 
 
 .movie:hover .movie__img {
     transform: scale(1.03);
     border-radius: 4px;
-    
+
 }
 
 .movie__title {
@@ -247,13 +247,13 @@ loading state
 
 
 .movies__loading--spinner {
-    display: none  !important
-  }
-  
-  .movies__loading .movies__loading--spinner {
+    display: none !important
+}
+
+.movies__loading .movies__loading--spinner {
     display: block !important
-  }
-  
+}
+
 
 .movies__loading {
     z-index: 10000000;
@@ -268,14 +268,14 @@ loading state
 
 .fa-spinner {
     animation: spin 600ms infinite linear;
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
     0% {
-      transform: rotate(0);
+        transform: rotate(0);
     }
-  
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
