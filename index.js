@@ -16,25 +16,21 @@ async function onSearchChange(event) {
 
 const moviesWrapper = document.querySelector(".movies");
 
-function renderMovies(filter) {
   moviesWrapper.classList.add("movies__loading");
 
-  if (filter === "NEWEST_TO_OLDEST") {
-    movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.year));
-    moviesListELem.innerHTML = movies
-      .map((movie) => moviesHTML(movie))
-      .join("");
-      console.log(movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.year)))
-  } else if (filter === "OLDEST_TO_NEWEST") {
-    movies.sort((a, b) => (a.Year || a.year) - (b.Year || b.year));
-    moviesListELem.innerHTML = movies
-      .map((movie) => moviesHTML(movie))
-      .join("");
+  function renderMovies(filter) {
+    if (filter === "NEWEST_TO_OLDEST") {
+      return movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.year));
+    } else if (filter === "OLDEST_TO_NEWEST") {
+      return movies.sort((a, b) => (a.Year || a.year) - (b.Year || b.year));
+    }
   }
-}
 
 function filterMovies(event) {
-  renderMovies(event.target.value);
+  const filter = event.target.value;
+  const sortedMovies = renderMovies(filter);
+  moviesListELem.innerHTML = sortedMovies.map((movie) => moviesHTML(movie)).join("");
+  console.log(sortedMovies)
 }
 
 async function renderMovies(id) {
@@ -50,9 +46,7 @@ async function renderMovies(id) {
     moviesListELem.innerHTML = movies
       .map((movie) => moviesHTML(movie))
       .join("");
-    console.log(moviesData);
-
-    moviesWrapper.classList.remove("movies__loading");
+    moviesWrapper.classList.remove("movies__loading"); // remove loading class
   }
 }
 
@@ -70,4 +64,4 @@ function moviesHTML(movie) {
     `;
 }
 
-renderMovies(id);
+renderMovies(id)

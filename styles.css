@@ -92,6 +92,7 @@ input {
     border-radius: 30px;
     padding-left: 18px;
     z-index: 1;
+    text-transform: capitalize;
 
 }
 
@@ -115,6 +116,15 @@ input {
     z-index: 10000;
     color: black;
     font-size: 32px;
+}
+
+.search-icon {
+    transition: all 200ms ease;
+}
+
+.search-icon:hover {
+    transform: scale(0.97);
+    color: #26c1ff;
 }
 
 
@@ -166,7 +176,9 @@ MOVIE SEARCH RESULTS
 }
 
 .searchResult {
-    color: red
+    color: #26c1ff;
+    text-transform: capitalize;
+
 }
 
 /* 
