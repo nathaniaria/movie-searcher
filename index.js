@@ -29,16 +29,13 @@ function renderMovies(filter) {
     moviesListELem.innerHTML = movies.map((movie) => moviesHTML(movie)).join("");
   }
 
-  
+
   
 }
 
 function filterMovies(event) {
   renderMovies(event.target.value);
 }
-setTimeout(()=> {
-  renderMovies
-},2000)
 
 
 async function renderMovies(id) {
@@ -48,10 +45,11 @@ async function renderMovies(id) {
     movies = moviesData.Search;
     moviesListELem.innerHTML = movies.map((movie) => moviesHTML(movie)).join("");
     console.log(moviesData);
+
+    moviesWrapper.classList.remove ('movies__loading')
   }
 
 
-  moviesWrapper.classList.remove ('movies__loading')
 
  
 }
@@ -69,5 +67,7 @@ function moviesHTML(movie) {
     </div>
     `;
 }
+
+
 
 renderMovies(id);
