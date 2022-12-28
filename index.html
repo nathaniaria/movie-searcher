@@ -41,7 +41,7 @@
         <div class="movie__info--container">
             <div class="movie__results--header">Search Results: <span class="searchResult"></span></div>
             <select id="filter" onchange="filterMovies(event)">
-                <option value="">Sort</option>
+                <option value="" disabled selected>Sort</option>
                 <option value="NEWEST_TO_OLDEST">Newest to Oldest</option>
                 <option value="OLDEST_TO_NEWEST">Oldest to Newest</option>
             </select>
@@ -56,7 +56,7 @@
                         
                     </div>
             </div>
-            <div class="movies__loading movieSpin">
+            <div class="movies__loading movieSpin movies">
                 <i class="fas fa-spinner movies__loading--spinner"></i>
             </div>
 
