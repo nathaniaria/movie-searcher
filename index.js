@@ -20,10 +20,6 @@ function renderMovies(filter) {
 
   moviesWrapper.classList.add("movies__loading");
 
-  if (!movies) {
-    movies = moviesResponse()
-  }
-  booksWrapper.classList.remove ('movies__loading')
 
   if (filter === "NEWEST_TO_OLDEST") {
     movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.year));
@@ -34,12 +30,16 @@ function renderMovies(filter) {
   }
 
   
+  
 }
 
 function filterMovies(event) {
   renderMovies(event.target.value);
-  console.log(filterMovies)
 }
+setTimeout(()=> {
+  renderMovies
+},2000)
+
 
 async function renderMovies(id) {
   const moviesResponse = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=${id}`);
@@ -49,6 +49,11 @@ async function renderMovies(id) {
     moviesListELem.innerHTML = movies.map((movie) => moviesHTML(movie)).join("");
     console.log(moviesData);
   }
+
+
+  moviesWrapper.classList.remove ('movies__loading')
+
+ 
 }
 
 function moviesHTML(movie) {
