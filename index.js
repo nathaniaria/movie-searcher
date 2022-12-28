@@ -49,9 +49,6 @@ async function renderMovies(id) {
     moviesWrapper.classList.remove ('movies__loading')
   }
 
-
-
- 
 }
 
 function moviesHTML(movie) {
@@ -67,7 +64,6 @@ function moviesHTML(movie) {
     </div>
     `;
 }
-
 
 
 renderMovies(id);
