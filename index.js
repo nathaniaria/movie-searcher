@@ -7,7 +7,6 @@ const id = localStorage.getItem("id");
 
 let movies;
 let movie;
-let filtermovies;
 
 async function onSearchChange(event) {
   const id = event.target.value;
@@ -18,7 +17,13 @@ async function onSearchChange(event) {
 const moviesWrapper = document.querySelector(".movies");
 
 function renderMovies(filter) {
+
   moviesWrapper.classList.add("movies__loading");
+
+  if (!movies) {
+    movies = moviesResponse()
+  }
+  booksWrapper.classList.remove ('movies__loading')
 
   if (filter === "NEWEST_TO_OLDEST") {
     movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.year));
@@ -28,21 +33,16 @@ function renderMovies(filter) {
     moviesListELem.innerHTML = movies.map((movie) => moviesHTML(movie)).join("");
   }
 
-  setTimeout(function() {
-    moviesWrapper.classList.remove("movies__loading");
-  }, 1000)
-    
   
 }
 
 function filterMovies(event) {
   renderMovies(event.target.value);
+  console.log(filterMovies)
 }
 
 async function renderMovies(id) {
-  const moviesResponse = await fetch(
-    `https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=${id}`
-  );
+  const moviesResponse = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=${id}`);
   const moviesData = await moviesResponse.json();
   if (moviesData && Array.isArray(moviesData.Search)) {
     movies = moviesData.Search;
