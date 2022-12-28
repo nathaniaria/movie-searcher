@@ -4,6 +4,9 @@
 const moviesListELem = document.querySelector(".movies__row")
 const moviesSearchElem = document.querySelector(".searchResult")
 const id = localStorage.getItem("id")
+let movies;
+let movie;
+let filtermovies;
 
 
 async function onSearchChange(event) {
@@ -16,18 +19,20 @@ async function onSearchChange(event) {
 function renderMovies(filter) {
   const moviesWrapper = document.querySelector('.movies')
 
+  
   moviesWrapper.classList += ' movies__loading'
 
-  if (!movies) {
-    movies = moviesData()
-  }
-  moviesWrapper.classList.remove('movies__loading')
+  setTimeout((
+    moviesWrapper.classList.remove('movies__loading')
+  ), 1000)
 
   if (filter === 'NEWEST_TO_OLDEST') {
     movies.sort((a, b) => (a.Year || a.year) - (b.Year || b.Year))
+    moviesListELem.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join("")
   } 
   else if (filter === 'OLDEST_TO_NEWEST') {
     movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.Year))
+    moviesListELem.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join("")
   }
 
 }
