@@ -5,6 +5,7 @@ const moviesListELem = document.querySelector(".movies__row");
 const moviesSearchElem = document.querySelector(".searchResult");
 const id = localStorage.getItem("id");
 
+let movies;
 let movie;
 let filtermovies;
 
@@ -20,20 +21,28 @@ function renderMovies(filter) {
   moviesWrapper.classList.add("movies__loading");
 
   if (filter === "NEWEST_TO_OLDEST") {
-    movies.sort((a, b) => (a.Year || a.year) - (b.Year || b.Year));
+    movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.year));
     moviesListELem.innerHTML = movies.map((movie) => moviesHTML(movie)).join("");
   } else if (filter === "OLDEST_TO_NEWEST") {
-    movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.Year));
+    movies.sort((a, b) => (a.Year || a.year) - (b.Year || b.year));
     moviesListELem.innerHTML = movies.map((movie) => moviesHTML(movie)).join("");
   }
 
-  if (movies && movies.length > 0) {
+  setTimeout(function() {
     moviesWrapper.classList.remove("movies__loading");
-}}
+  }, 1000)
+    
+  
+}
+
+function filterMovies(event) {
+  renderMovies(event.target.value);
+}
 
 async function renderMovies(id) {
   const moviesResponse = await fetch(
-    `https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=${id}`);
+    `https://www.omdbapi.com/?i=tt3896198&apikey=f97dee03&s=${id}`
+  );
   const moviesData = await moviesResponse.json();
   if (moviesData && Array.isArray(moviesData.Search)) {
     movies = moviesData.Search;
