@@ -18,19 +18,21 @@ const moviesWrapper = document.querySelector(".movies");
 
   moviesWrapper.classList.add("movies__loading");
 
-  function renderMovies(filter) {
+  function sortMovies(filter) {
     if (filter === "NEWEST_TO_OLDEST") {
       return movies.sort((a, b) => (b.Year || b.year) - (a.Year || a.year));
     } else if (filter === "OLDEST_TO_NEWEST") {
       return movies.sort((a, b) => (a.Year || a.year) - (b.Year || b.year));
     }
+    
+    moviesWrapper.classList.remove("movies__loading"); // remove loading class
   }
 
 function filterMovies(event) {
   const filter = event.target.value;
-  const sortedMovies = renderMovies(filter);
-  moviesListELem.innerHTML = sortedMovies.map((movie) => moviesHTML(movie)).join("");
+  const sortedMovies = sortMovies(filter);
   console.log(sortedMovies)
+  moviesListELem.innerHTML = sortedMovies.map((movie) => moviesHTML(movie)).join("");
 }
 
 async function renderMovies(id) {
@@ -54,6 +56,7 @@ function moviesHTML(movie) {
   return `
         <div class="movie">
             <figure class="movie__img--wrapper">
+            <div ${movie.Year}></div>
                 <img src="${movie.Poster}" class="movie__img" alt="">
             </figure>
             <div class="movie__title">
